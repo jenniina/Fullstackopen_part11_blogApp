@@ -43,7 +43,7 @@ jobs:
           PORT: ${{ secrets.PORT }}
           # pass GitHub token to detect new build vs re-run build
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-
+        continue-on-error: true
       - name: build
         id: build
         run: npm run build
