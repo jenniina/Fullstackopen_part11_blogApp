@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "server": "cd .. && npm run start:test",
+    "server": "vite && cd .. && npm run start:test",
     "preview": "vite preview",
     "lint": "prettier --write .",
     "test": "vitest",
@@ -28,6 +28,8 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^14.0.0",
     "@testing-library/user-event": "^14.4.3",
+    "@types/cypress": "^1.1.3",
+    "@types/jest": "^29.5.1",
     "@types/mocha": "^10.0.1",
     "@types/node": "^18.15.11",
     "@types/react": "^18.0.28",
