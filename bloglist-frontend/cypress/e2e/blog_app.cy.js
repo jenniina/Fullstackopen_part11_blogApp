@@ -51,6 +51,7 @@ describe('When logged in', function () {
       cy.get('input[placeholder*="password"]').type('Testaaja')
       cy.get('button[type="submit"]').click()
 
+      cy.wait(5000)
       cy.contains('Add a blog').click()
       cy.get('input[placeholder*="Title"]').type('Cypress Blog')
       cy.get('input[placeholder*="Author"]').type('Cypress Author')
