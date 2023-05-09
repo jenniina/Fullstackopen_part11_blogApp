@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "server": "vite && cd .. && npm run start:test",
+    "server": "cd .. && npm run start:test",
     "preview": "vite preview",
     "lint": "prettier --write .",
     "test": "vitest",
