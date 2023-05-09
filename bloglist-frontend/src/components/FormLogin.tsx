@@ -28,7 +28,7 @@ const FormLogin = () => {
 
   const handleLogin = async (event: FormEvent) => {
     event.preventDefault()
-    dispatch(notify(`Logging in...`, true, 8))
+    dispatch(notify(`Logging in...`, false, 8))
 
     await dispatch(login(username, password))
       .then(() => {
@@ -51,8 +51,8 @@ const FormLogin = () => {
       {user ? (
         <p>
           {user?.name} is logged in{' '}
-          <button onClick={handleLogout}>
-            <small>Logout</small>
+          <button onClick={handleLogout} id="logout">
+            logout
           </button>
         </p>
       ) : (
@@ -80,7 +80,9 @@ const FormLogin = () => {
                   onChange={({ target }) => setPassword(target.value)}
                 />
               </label>
-              <button type="submit">login</button>
+              <button type="submit" id="login">
+                login
+              </button>
             </form>
           </Accordion>
         </>

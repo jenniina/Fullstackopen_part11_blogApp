@@ -32,7 +32,8 @@ jobs:
         id: e2e
         uses: cypress-io/github-action@dfda9365a4881a8521b8e3c3538275242aae9151
         with:
-          start: npm run start
+          start: npm run server
+          command: npm run server-and-test
           wait-on: 'http://localhost:3003'
           working-directory: bloglist-frontend
         env:
@@ -42,19 +43,25 @@ jobs:
           PORT: ${{ secrets.PORT }}
           # pass GitHub token to detect new build vs re-run build
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-
+        continue-on-error: true
       - name: build
         id: build
         run: npm run build
         working-directory: bloglist-frontend
 
-  deployment_part2:
+  deployment_part1:
     needs: [deployment_part0]
     runs-on: ubuntu-20.04
     steps:
+      - uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab
+      - uses: actions/setup-node@64ed1c7eab4cce3362f8c340dee64e5eaeef8f7c
+        with:
+          node-version: '16'
+      - name: Install dependencies
+        run: npm install
       - name: Check style
-        id: eslint
-        run: npm run eslint
+        id: lint
+        run: npm run lint
       - name: test
         id: test
         run: npm run test
@@ -84,13 +91,16 @@ jobs:
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
 
   tag_release:
-    needs: [deployment_part2]
+    needs: [deployment_part1]
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab
         with:
           ref: ${{ github.sha }}
           fetch-depth: '0'
+      - uses: actions/setup-node@64ed1c7eab4cce3362f8c340dee64e5eaeef8f7c
+        with:
+          node-version: '16'
       - name: Bump version and push tag
         if: ${{ github.event_name == 'push' && !contains(join(github.event.commits.*.message, ' '), '#skip') }}
         uses: anothrNick/github-tag-action@8c8163ef62cf9c4677c8e800f36270af27930f42

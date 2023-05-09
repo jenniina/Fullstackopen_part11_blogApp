@@ -41,7 +41,7 @@ blogsRouter.post('/', async (request, response) => {
       author: body.author,
       url: body.url,
       likes: !body.likes ? 0 : body.likes,
-      user: user.id,
+      user: user?.id,
     })
     if (!body.title || !body.author || !body.url)
       response.status(400).json({ error: 'Please fill in all the fields' })
