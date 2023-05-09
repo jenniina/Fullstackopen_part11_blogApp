@@ -11,7 +11,8 @@
     "lint": "prettier --write .",
     "test": "vitest",
     "cypress:open": "cypress open",
-    "test-e2e": "start-server-and-test dev http://localhost:5173 cypress run"
+    "test-e2e": "cypress run",
+    "server-and-test": "start-server-and-test dev http://localhost:5173 test-e2e"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.5",
