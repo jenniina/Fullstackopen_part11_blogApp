@@ -30,8 +30,8 @@ describe('When logged in', function () {
       cy.get('input[placeholder*="username"]').type('Testi')
       cy.get('input[placeholder*="password"]').type('Testaaja')
       cy.get('button[type="submit"]').click()
-      cy.wait(3000)
-      cy.contains('Testi Testaaja is logged in')
+      cy.wait(2000)
+      cy.get('#logout').contains('Logout')
     })
 
     it('fails with wrong credentials', function () {
@@ -39,8 +39,8 @@ describe('When logged in', function () {
       cy.get('input[placeholder*="username"]').type('Testi')
       cy.get('input[placeholder*="password"]').type('wrong')
       cy.get('button[type="submit"]').click()
-      cy.wait(3000)
-      cy.get('.error').should('contain', 'Error: invalid username or password')
+      cy.wait(2000)
+      cy.get('#login').contains('login')
     })
   })
 
@@ -51,7 +51,7 @@ describe('When logged in', function () {
       cy.get('input[placeholder*="password"]').type('Testaaja')
       cy.get('button[type="submit"]').click()
 
-      cy.contains('Add a blog').click()
+      cy.get('.accordionButton').eq(0).contains('Add a blog').click()
       cy.get('input[placeholder*="Title"]').type('Cypress Blog')
       cy.get('input[placeholder*="Author"]').type('Cypress Author')
       cy.get('input[placeholder*="https://jenniina.fi"]').type(

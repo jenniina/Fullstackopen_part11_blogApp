@@ -51,8 +51,8 @@ const FormLogin = () => {
       {user ? (
         <p>
           {user?.name} is logged in{' '}
-          <button onClick={handleLogout}>
-            <small>Logout</small>
+          <button onClick={handleLogout} id="logout">
+            Logout
           </button>
         </p>
       ) : (
@@ -80,7 +80,9 @@ const FormLogin = () => {
                   onChange={({ target }) => setPassword(target.value)}
                 />
               </label>
-              <button type="submit">login</button>
+              <button type="submit" id="login">
+                login
+              </button>
             </form>
           </Accordion>
         </>

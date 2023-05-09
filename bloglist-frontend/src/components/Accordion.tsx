@@ -40,6 +40,7 @@ const Accordion = forwardRef(
     return (
       <>
         <button
+          className="accordionButton"
           onClick={toggleVisibility}
           style={visible ? { display: 'none' } : { display: 'inline-block' }}
         >
@@ -51,7 +52,9 @@ const Accordion = forwardRef(
           style={visible ? { display: 'block' } : { display: 'none' }}
         >
           {props.children}
-          <button onClick={toggleVisibility}>close</button>
+          <button className="accordionButton" onClick={toggleVisibility}>
+            close
+          </button>
         </div>
       </>
     )
