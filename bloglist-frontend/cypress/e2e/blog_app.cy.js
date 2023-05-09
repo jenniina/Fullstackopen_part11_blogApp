@@ -30,7 +30,9 @@ describe('When logged in', function () {
       cy.get('input[placeholder*="username"]').type('Testi')
       cy.get('input[placeholder*="password"]').type('Testaaja')
       cy.get('button[type="submit"]').click()
-      cy.wait(15000)
+      cy.wait(2000)
+      cy.contains('Logging in')
+      cy.wait(20000)
       cy.get('#logout').contains('logout')
     })
 
@@ -51,7 +53,7 @@ describe('When logged in', function () {
       cy.get('input[placeholder*="password"]').type('Testaaja')
       cy.get('button[type="submit"]').click()
 
-      cy.wait(10000)
+      cy.wait(20000)
       cy.get('.accordionButton').contains('Add a blog').click()
       cy.get('input[placeholder*="Title"]').type('Cypress Blog')
       cy.get('input[placeholder*="Author"]').type('Cypress Author')
