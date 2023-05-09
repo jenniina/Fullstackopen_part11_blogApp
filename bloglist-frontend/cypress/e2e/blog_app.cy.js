@@ -54,7 +54,7 @@ describe('When logged in', function () {
       cy.get('button[type="submit"]').click()
 
       cy.wait(20000)
-      cy.get('.accordionButton').contains('Add a blog').click()
+      cy.get('.accordionButton').eq(0).click()
       cy.get('input[placeholder*="Title"]').type('Cypress Blog')
       cy.get('input[placeholder*="Author"]').type('Cypress Author')
       cy.get('input[placeholder*="https://jenniina.fi"]').type(
