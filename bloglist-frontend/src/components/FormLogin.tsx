@@ -28,7 +28,7 @@ const FormLogin = () => {
 
   const handleLogin = async (event: FormEvent) => {
     event.preventDefault()
-    dispatch(notify(`Logging in...`, true, 8))
+    dispatch(notify(`Logging in...`, false, 8))
 
     await dispatch(login(username, password))
       .then(() => {
