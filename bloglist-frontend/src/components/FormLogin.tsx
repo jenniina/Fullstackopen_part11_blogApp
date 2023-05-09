@@ -52,7 +52,7 @@ const FormLogin = () => {
         <p>
           {user?.name} is logged in{' '}
           <button onClick={handleLogout} id="logout">
-            Logout
+            logout
           </button>
         </p>
       ) : (
