@@ -11,7 +11,7 @@
     "lint": "prettier --write .",
     "test": "vitest",
     "cypress:open": "cypress open",
-    "test-e2e": "cypress run"
+    "test-e2e": "vite && cypress run"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.5",
