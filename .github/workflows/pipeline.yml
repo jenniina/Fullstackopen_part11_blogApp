@@ -49,7 +49,7 @@ jobs:
         run: npm run build
         working-directory: bloglist-frontend
 
-  deployment_part2:
+  deployment_part1:
     needs: [deployment_part0]
     runs-on: ubuntu-20.04
     steps:

@@ -30,8 +30,8 @@ describe('When logged in', function () {
       cy.get('input[placeholder*="username"]').type('Testi')
       cy.get('input[placeholder*="password"]').type('Testaaja')
       cy.get('button[type="submit"]').click()
-      cy.wait(10000)
-      cy.contains('logout')
+      cy.wait(15000)
+      cy.get('#logout').contains('logout')
     })
 
     it('fails with wrong credentials', function () {
@@ -40,7 +40,7 @@ describe('When logged in', function () {
       cy.get('input[placeholder*="password"]').type('wrong')
       cy.get('button[type="submit"]').click()
       cy.wait(5000)
-      cy.contains('login')
+      cy.get('#login').contains('login')
     })
   })
 
@@ -52,7 +52,7 @@ describe('When logged in', function () {
       cy.get('button[type="submit"]').click()
 
       cy.wait(10000)
-      cy.contains('Add a blog').click()
+      cy.get('.accordionButton').contains('Add a blog').click()
       cy.get('input[placeholder*="Title"]').type('Cypress Blog')
       cy.get('input[placeholder*="Author"]').type('Cypress Author')
       cy.get('input[placeholder*="https://jenniina.fi"]').type(
