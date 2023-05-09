@@ -32,7 +32,7 @@ jobs:
         id: e2e
         uses: cypress-io/github-action@dfda9365a4881a8521b8e3c3538275242aae9151
         with:
-          start: npm run start
+          start: npm run server
           wait-on: 'http://localhost:3003'
           working-directory: bloglist-frontend
         env:
